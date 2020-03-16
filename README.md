@@ -7,7 +7,7 @@ contact = amirali.yazdi@yahoo.com
 python lyrics_predictor.py
 
 ## Description:
-- Enter name of two artists: The program will scrape lyrics of the first two pages on the website
+- Enter name of two artists: program will scrape lyrics of the first two pages on the website
 
-- Enter a lyrics: The program will predict which artist it belongs and print the result.
+- Enter a lyrics: program will predict which artist it belongs and print the result.
 
