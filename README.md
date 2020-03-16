@@ -9,5 +9,5 @@ python lyrics_predictor.py
 ## Description:
 - Enter names of two artists: program will scrape lyrics of the first two pages on the website and train a model on them
 
-- Enter a lyrics: program will predict which artist it belongs and print the result.
+- Enter lyrics of a song: program will predict which artist it belongs and print the result.
 
