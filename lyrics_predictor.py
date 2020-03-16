@@ -1,3 +1,4 @@
+"""This fle is the main file to predict the artist's lyrics."""
 from scrape_lyrics import scrape_artist_lyrics
 from vectorize_and_train import clean_vectorize_train_naive_bayes
 """ This is the main py file to run the program. It gets three outputs:

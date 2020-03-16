@@ -1,3 +1,4 @@
+"""Thsi file contains a function to scrape lyrics from any artist."""
 from bs4 import BeautifulSoup
 import requests
 import pandas as pd
@@ -20,11 +21,8 @@ def scrape_artist_lyrics(artist):
         for s in range(len(b_all.find_all(attrs={"class": "songs-table compact"})[0].find_all('a'))):
             lyrics_url = b_all.find_all(attrs={"class": "songs-table compact"})[0].find_all('a')[s].get("href")
             lyric_url = requests.get(lyrics_url)
-
             lyric_parser = BeautifulSoup(lyric_url.text, "html.parser")
-
             lyric = lyric_parser.find_all(attrs={"id": "lyrics-body-text"})[0].find_all("p")
-
             lyrics.append(lyric)
     clean_list = []
     for song in lyrics:

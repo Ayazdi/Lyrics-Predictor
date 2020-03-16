@@ -1,10 +1,12 @@
+"""This file contains a function to train a model on the lyrics."""
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
 
 
 def clean_vectorize_train_naive_bayes(csv1, csv2, lyric):
-    """This function clean and vectorize the lyrics by Tfidf and finally train a naive bayes model and predict which artist the given lyrics belongs."""
+    """This function clean and vectorize the lyrics by Tfidf and finally train
+    a naive bayes model and predict which artist the given lyrics belongs."""
     df1 = pd.read_csv(f"{csv1} Lyrics.csv", index_col=0)
     df2 = pd.read_csv(f"{csv2} Lyrics.csv", index_col=0)
     df = pd.concat([df1, df2])
@@ -22,9 +24,7 @@ def clean_vectorize_train_naive_bayes(csv1, csv2, lyric):
     m_t.fit(X_train, y_train)
 
     new_song = [lyric]
-
     X_test = tv_Tf.transform(new_song).todense()
-
     prediction = m_t.predict(X_test)
 
     return print(f"This song belongs to {prediction}")
