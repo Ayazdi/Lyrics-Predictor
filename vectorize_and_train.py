@@ -5,8 +5,10 @@ from sklearn.naive_bayes import MultinomialNB
 
 
 def clean_vectorize_train_naive_bayes(csv1, csv2, lyric):
-    """This function clean and vectorize the lyrics by Tfidf and finally train
-    a naive bayes model and predict which artist the given lyrics belongs."""
+    """
+    This function clean and vectorize the lyrics by Tfidf and finally train
+    a naive bayes model and predict which artist the given lyrics belongs.
+    """
     df1 = pd.read_csv(f"{csv1} Lyrics.csv", index_col=0)
     df2 = pd.read_csv(f"{csv2} Lyrics.csv", index_col=0)
     df = pd.concat([df1, df2])
