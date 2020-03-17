@@ -1,0 +1,5 @@
+scikit-learn==0.22.2.post1
+pandas==1.0.1
+pytest==5.2.1
+pylint
+bs4==0.0.1
