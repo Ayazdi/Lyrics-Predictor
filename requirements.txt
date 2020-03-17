@@ -4,4 +4,3 @@ pytest==5.2.1
 pylint
 bs4==0.0.1
 requests
-os
