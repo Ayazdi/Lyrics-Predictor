@@ -15,28 +15,27 @@ from get_urls_and_scrape import get_urls, lyrics_scraper
 from clean_and_save import clean_and_save_as_csv
 
 
-print("Please enter the name of the first artist:")
-ARTIST_1 = input()
+if __name__ == '__main__':
+    print("Please enter the name of the first artist:")
+    ARTIST_1 = input()
+    print("Please enter the name of the second artist:")
+    ARTIST_2 = input()
+    print("Write a song that you want to predict to which artist it belongs:")
+    LYRICS = input()
 
-if os.path.isfile(f'{ARTIST_1} Lyrics.csv'):
-    print(f"The {ARTIST_1} file already exist. The model will be train on that file")
-else:
-    urls, artist = get_urls(ARTIST_1)
-    lyrics = lyrics_scraper(urls)
-    clean_and_save_as_csv(lyrics, artist)
-
-print("Please enter the name of the second artist:")
-ARTIST_2 = input()
-
-if os.path.isfile(f'{ARTIST_2} Lyrics.csv'):
-    print(f"The {ARTIST_2} file already exist. The model will be train on that file")
-else:
-    urls, artist = get_urls(ARTIST_2)
-    lyrics = lyrics_scraper(urls)
-    clean_and_save_as_csv(lyrics, artist)
+    if os.path.isfile(f'{ARTIST_1} Lyrics.csv'):
+        print(f"The {ARTIST_1} file already exist. The model will be train on that file")
+    else:
+        urls, artist = get_urls(ARTIST_1)
+        lyrics = lyrics_scraper(urls)
+        clean_and_save_as_csv(lyrics, artist)
 
 
-print("Write a song that you want to predict to which artist it belongs:")
-LYRICS = input()
+    if os.path.isfile(f'{ARTIST_2} Lyrics.csv'):
+        print(f"The {ARTIST_2} file already exist. The model will be train on that file")
+    else:
+        urls, artist = get_urls(ARTIST_2)
+        lyrics = lyrics_scraper(urls)
+        clean_and_save_as_csv(lyrics, artist)
 
-clean_vectorize_train_naive_bayes(ARTIST_1, ARTIST_2, LYRICS)
+    clean_vectorize_train_naive_bayes(ARTIST_1, ARTIST_2, LYRICS)
