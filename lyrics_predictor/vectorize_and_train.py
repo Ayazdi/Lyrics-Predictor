@@ -4,7 +4,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
 
 
-def clean_vectorize_train_naive_bayes(csv1, csv2, lyric):
+def clean_vectorize_train_naive_bayes(csv1, csv2):
     """
     This function clean and vectorize the lyrics by Tfidf and finally train
     a naive bayes model and predict which artist the given lyrics belongs.
@@ -24,9 +24,9 @@ def clean_vectorize_train_naive_bayes(csv1, csv2, lyric):
 
     m_t = MultinomialNB(alpha=0.001)
     m_t.fit(X_train, y_train)
+    return m_t, tv_Tf
 
-    new_song = [lyric]
-    X_test = tv_Tf.transform(new_song).todense()
+def predcit_func(lyrics, m_t, tv_Tf):
+    X_test = tv_Tf.transform([lyrics]).todense()
     prediction = m_t.predict(X_test)
-
     return print(f"This song belongs to {prediction}")
