@@ -1,6 +1,6 @@
 """This file gets the urls of the first 2 pages and scrape the lyrics."""
 from bs4 import BeautifulSoup
-from clean_and_save import clean_and_save_as_csv
+from lyrics_predictor.clean_and_save import clean_and_save_as_csv
 import requests
 import os.path
 
