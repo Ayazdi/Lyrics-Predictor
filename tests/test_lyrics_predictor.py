@@ -1,5 +1,5 @@
-from lyrics_predictor.lyrics_predictor import get_urls
-from lyrics_predictor.lyrics_predictor import lyrics_scraper
+from lyrics_predictor import lyrics_predictor.get_urls
+from lyrics_predictor import lyrics_predictor.lyrics_scraper
 import requests
 
 import pytest
