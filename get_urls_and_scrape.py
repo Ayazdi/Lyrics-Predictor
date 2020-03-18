@@ -34,9 +34,8 @@ def lyrics_scraper(urls, short = False):
         links = b_all.find_all(attrs={"class":"songs-table compact"})[0].find_all('a')
         if short:   #for the test file to scrape only 2 lyrics
             links = links[:2]
-        for s in range(len(links)):
-            lyrics_url = b_all.find_all(attrs={"class":
-                                        "songs-table compact"})[0].find_all('a')[s].get("href")
+        for link in links:
+            lyrics_url = link.get("href")
             lyric_url = requests.get(lyrics_url)
             lyric_parser = BeautifulSoup(lyric_url.text, "html.parser")
             lyrics = lyric_parser.find_all(attrs={"id":
