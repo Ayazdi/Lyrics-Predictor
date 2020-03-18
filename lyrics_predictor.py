@@ -12,6 +12,7 @@ It accepts three outputs:
 import os.path
 from vectorize_and_train import clean_vectorize_train_naive_bayes
 from get_urls_and_scrape import get_urls, lyrics_scraper
+from get_urls_and_scrape import get_urls_scrape_save_as_csv
 from clean_and_save import clean_and_save_as_csv
 
 
@@ -23,19 +24,7 @@ if __name__ == '__main__':
     print("Write a song that you want to predict to which artist it belongs:")
     LYRICS = input()
 
-    if os.path.isfile(f'{ARTIST_1} Lyrics.csv'):
-        print(f"The {ARTIST_1} file already exist. The model will be train on that file")
-    else:
-        urls, artist = get_urls(ARTIST_1)
-        lyrics = lyrics_scraper(urls)
-        clean_and_save_as_csv(lyrics, artist)
-
-
-    if os.path.isfile(f'{ARTIST_2} Lyrics.csv'):
-        print(f"The {ARTIST_2} file already exist. The model will be train on that file")
-    else:
-        urls, artist = get_urls(ARTIST_2)
-        lyrics = lyrics_scraper(urls)
-        clean_and_save_as_csv(lyrics, artist)
+    get_urls_scrape_save_as_csv(ARTIST_1)
+    get_urls_scrape_save_as_csv(ARTIST_2)
 
     clean_vectorize_train_naive_bayes(ARTIST_1, ARTIST_2, LYRICS)
