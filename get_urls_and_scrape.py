@@ -17,20 +17,22 @@ def get_urls(artist):
         all_pages.append(page)
     return all_pages, artist
 
-def lyrics_scraper(urls):
+def lyrics_scraper(urls, short = False):
     """
     Scrapes every lyrics in the artist page.
 
     ursl: urls of the first two pages of the artist with links of the lyrics
 
-    returns scraped lyrics using BeautifulSoup
+    returns a list of the scraped lyrics using BeautifulSoup
     """
     all_lyrics = []
     for u in urls:
         page = requests.get(u)
         b_all = BeautifulSoup(page.text, "html.parser")
-        for s in range(len(b_all.find_all(attrs={"class":
-                       "songs-table compact"})[0].find_all('a'))):
+        links = b_all.find_all(attrs={"class":"songs-table compact"})[0].find_all('a')
+        if short:
+            links = links[:2]
+        for s in range(len(links)):
             lyrics_url = b_all.find_all(attrs={"class":
                                         "songs-table compact"})[0].find_all('a')[s].get("href")
             lyric_url = requests.get(lyrics_url)
