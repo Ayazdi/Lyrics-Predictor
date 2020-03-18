@@ -1,6 +1,8 @@
 """This file gets the urls of the first 2 pages and scrape the lyrics."""
 from bs4 import BeautifulSoup
+from clean_and_save import clean_and_save_as_csv
 import requests
+import os.path
 
 def get_urls(artist):
     """
@@ -30,7 +32,7 @@ def lyrics_scraper(urls, short = False):
         page = requests.get(u)
         b_all = BeautifulSoup(page.text, "html.parser")
         links = b_all.find_all(attrs={"class":"songs-table compact"})[0].find_all('a')
-        if short:
+        if short:   #for the test file to scrape only 2 lyrics
             links = links[:2]
         for s in range(len(links)):
             lyrics_url = b_all.find_all(attrs={"class":
@@ -42,3 +44,19 @@ def lyrics_scraper(urls, short = False):
             all_lyrics.append(lyrics)
 
     return all_lyrics
+
+def get_urls_scrape_save_as_csv(ARTIST):
+    """
+    Get urls, scrapes and save as csv.
+
+    If the csv file already exist this function will pass.
+    ARTIST: name of the artist as string
+
+    returns dataframe and save it as a csv file with all lyrics and the name of the artist
+    """
+    if os.path.isfile(f'{ARTIST} Lyrics.csv'):
+        print(f"The {ARTIST} file already exist. The model will be train on that file")
+    else:
+        urls, artist = get_urls(ARTIST)
+        lyrics = lyrics_scraper(urls)
+        clean_and_save_as_csv(lyrics, artist)
