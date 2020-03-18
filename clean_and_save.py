@@ -17,11 +17,8 @@ def clean_and_save_as_csv(lyrics, artist):
     clean_list = []
     for song in lyrics:
         clean_lyric = str(song)
-        clean_lyric = re.sub(r"<.{2,30}>", " ", clean_lyric)
-        clean_lyric = re.sub(r"\n", " ", clean_lyric)
-        clean_lyric = re.sub(r"[]]", "", clean_lyric)
-        clean_lyric = re.sub(r"[[]", "", clean_lyric)
-        clean_lyric = re.sub(r"\\", "", clean_lyric)
+        clean_lyric = re.sub(r"<.{2,30}>|\n", " ", clean_lyric)
+        clean_lyric = re.sub(r"[]]|[[]|\\", "", clean_lyric)
         clean_list.append(clean_lyric)
 
     df = pd.DataFrame()
