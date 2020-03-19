@@ -56,16 +56,9 @@ def list_lyrics_2(link_2):
 # test if a csv file is saved in the directory
 def test_csv_save(list_lyrics):
     clean_and_save_as_csv(list_lyrics, "Metallica")
+    clean_and_save_as_csv(list_lyrics, "Nirvana")
     assert os.path.isfile('Metallica Lyrics.csv')
-
-
-# save lyrics as csv
-def csv_save(list_lyrics):
-    clean_and_save_as_csv(list_lyrics, "Metallica")
-
-
-def csv_save_2(list_lyrics_2):
-    clean_and_save_as_csv(list_lyrics_2, "Nirvana")
+    assert os.path.isfile('Nirvana Lyrics.csv')
 
 
 # test the possible outcomes of the predictions
