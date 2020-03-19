@@ -1,5 +1,7 @@
-from lyrics_predictor import lyrics_predictor as lp
+
+"""test file for lyrics_predictor."""
 import pytest
+from lyrics_predictor import lyrics_predictor as lp
 
 # test genrating correct numbers of urls
 PASSING_CONDITIONS=["Red Hot Chillie Pepers", "Metallica", "Papa Roach", "Shakira", "Beyonce"]
@@ -26,7 +28,7 @@ def link():
 
 # test if the function can scrape lyrics
 def test_scraping(link):
-    assert len(lp.lyrics_scraper(link, short = True)) > 1
+    assert len(lp.lyrics_scraper(link, short=True)) > 1
 
 
 

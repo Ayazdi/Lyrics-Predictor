@@ -11,7 +11,7 @@ It accepts three outputs:
  """
 from lyrics_predictor.vectorize_and_train import clean_vectorize_train_naive_bayes
 from lyrics_predictor.vectorize_and_train import predcit_func
-from lyrics_predictor.get_urls_and_scrape import get_urls_scrape_save_as_csv
+from lyrics_predictor.get_urls_and_scrape import get_urls_scrape_save_as_csv, get_urls, lyrics_scraper
 
 
 if __name__ == '__main__':
