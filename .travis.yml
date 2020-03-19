@@ -9,3 +9,4 @@ install:
 script:
 - pytest
 - pylint lyrics_predictor/*.py
+- coverage run test_lyrics_predicto.py
