@@ -1,5 +1,4 @@
 from lyrics_predictor import lyrics_predictor as lp
-import requests
 import pytest
 
 # test genrating correct numbers of urls
@@ -18,10 +17,12 @@ def test_urls(artist):
     artist_name = '-'.join(artist_name)
     assert urls[0] == f'https://www.metrolyrics.com/{artist_name}-alpage-1.html'
 
+
 @pytest.fixture
 def link():
     urls, artist_name = lp.get_urls("Metallica")
     return urls
+
 
 # test if the function can scrape lyrics
 def test_scraping(link):

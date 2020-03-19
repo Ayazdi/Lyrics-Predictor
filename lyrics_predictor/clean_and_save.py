@@ -1,14 +1,14 @@
 
-"""Clean and save as CSV"""
+"""Clean and save as CSV."""
 import re
 import pandas as pd
 
 
 def clean_and_save_as_csv(lyrics, artist):
-    """
-    clean and save the lyrics as csv file.
+    """Clean and save the lyrics as csv file.
 
     lyrics: all the lyrics in a list foramt
+    artis: name of the artist (str)
 
     returns a dataframe with cleaned lyrics
     and save it as a csv file with all the lyrics of the artist
@@ -25,8 +25,8 @@ def clean_and_save_as_csv(lyrics, artist):
     df["lyrics"] = clean_list
     df["Artist"] = artist
     df.drop_duplicates(subset=None, keep='first', inplace=True)
-    df = df[ ~df["lyrics"].str.contains("instrumental")]
-    df = df[ ~df["lyrics"].str.contains("Unfortunately, we are not authorized to show these lyrics")]
-    df = df[ ~df["lyrics"].str.contains("Instrumental")]
+    df = df[~df["lyrics"].str.contains("instrumental")]
+    df = df[~df["lyrics"].str.contains("Unfortunately, we are not authorized to show these lyrics")]
+    df = df[~df["lyrics"].str.contains("Instrumental")]
     print(f"{artist} lyrics has been saved in the folder")
     return df.to_csv(f"{artist} Lyrics.csv")

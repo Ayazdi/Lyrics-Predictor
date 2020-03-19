@@ -5,28 +5,39 @@ from sklearn.naive_bayes import MultinomialNB
 
 
 def clean_vectorize_train_naive_bayes(csv1, csv2):
-    """
-    This function clean and vectorize the lyrics by Tfidf and finally train
-    a naive bayes model and predict which artist the given lyrics belongs.
-    """
-    df1 = pd.read_csv(f"{csv1} Lyrics.csv", index_col=0)
-    df2 = pd.read_csv(f"{csv2} Lyrics.csv", index_col=0)
-    df = pd.concat([df1, df2])
-    df.dropna(inplace=True)
-    df.reset_index(inplace=True)
+    """Merge two csv files, vectorize and train a naive bayes model on the data.
 
-    tv_Tf = TfidfVectorizer(ngram_range=(1, 1), lowercase=True)
-    vector_tfidf = tv_Tf.fit_transform(df["lyrics"])
+    csv1 and csv2: csv files with lyrics of two artists and the name of them.
+
+    returns fitted TfidfVectorizer and MultinomialNB
+    """
+    df_1 = pd.read_csv(f"{csv1} Lyrics.csv", index_col=0)
+    df_2 = pd.read_csv(f"{csv2} Lyrics.csv", index_col=0)
+    df_3 = pd.concat([df_1, df_2])
+    df_3.dropna(inplace=True)
+    df_3.reset_index(inplace=True)
+
+    tv_tf = TfidfVectorizer(ngram_range=(1, 1), lowercase=True)
+    vector_tfidf = tv_tf.fit_transform(df_3["lyrics"])
     df_all = pd.DataFrame(vector_tfidf.todense())
 
-    X_train = df_all
-    y_train = df["Artist"]
+    x_train = df_all
+    y_train = df_3["Artist"]
 
     m_t = MultinomialNB(alpha=0.001)
-    m_t.fit(X_train, y_train)
-    return m_t, tv_Tf
+    m_t.fit(x_train, y_train)
+    return m_t, tv_tf
 
-def predcit_func(lyrics, m_t, tv_Tf):
-    X_test = tv_Tf.transform([lyrics]).todense()
-    prediction = m_t.predict(X_test)
+
+def predcit_func(lyrics, m_t, tv_tf):
+    """Predict the name of the artist.
+
+    lyrics: lyrics of the song for predicting the artist (str)
+    m_t: fitted naive bayes model
+    tv_Tf: fitted TfidfVectorizer model
+
+    returns name of the artist (str)
+    """
+    x_test = tv_tf.transform([lyrics]).todense()
+    prediction = m_t.predict(x_test)
     return print(f"This song belongs to {prediction}")
