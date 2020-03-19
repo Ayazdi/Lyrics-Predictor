@@ -7,7 +7,7 @@ It accepts three outputs:
 
  If the csv file of the artist's lyrics doesnt exist the program scrape it and
  save it as a csv file and train a naive bayes model to predict the artitst of
- the given lyrics.
+ the given lyrics
  """
 from lyrics_predictor.vectorize_and_train import clean_vectorize_train_naive_bayes
 from lyrics_predictor.vectorize_and_train import predcit_func

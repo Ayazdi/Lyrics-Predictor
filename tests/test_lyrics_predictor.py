@@ -1,7 +1,7 @@
 
 """test file for lyrics_predictor."""
 import pytest
-from lyrics_predictor import lyrics_predictor as lp
+from lyrics_predictor import lyrics_predictor_module as lp
 
 # test genrating correct numbers of urls
 PASSING_CONDITIONS=["Red Hot Chillie Pepers", "Metallica", "Papa Roach", "Shakira", "Beyonce"]
