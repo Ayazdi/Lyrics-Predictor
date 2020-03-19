@@ -9,7 +9,8 @@ from lyrics_predictor.vectorize_and_train import merge_vectorize_train_naive_bay
 from lyrics_predictor.vectorize_and_train import predcit_func
 
 # test genrating correct numbers of urls
-PASSING_CONDITIONS=["Red Hot Chillie Pepers", "Metallica", "Papa Roach", "Shakira", "Beyonce"]
+PASSING_CONDITIONS = ["Red Hot Chillie Pepers", "Metallica", "Papa Roach", "Shakira", "Beyonce"]
+
 
 @pytest.mark.parametrize("artist", PASSING_CONDITIONS)
 def test_urls(artist):
@@ -30,10 +31,12 @@ def link():
     urls, artist_name = get_urls("Metallica")
     return urls
 
+
 @pytest.fixture
 def link_2():
     urls, artist_name = get_urls("Nirvana")
     return urls
+
 
 # test if the function can scrape lyrics
 def test_scraping(link):
@@ -43,6 +46,7 @@ def test_scraping(link):
 @pytest.fixture
 def list_lyrics(link):
     return lyrics_scraper(link, short=True)
+
 
 @pytest.fixture
 def list_lyrics_2(link_2):
@@ -54,10 +58,11 @@ def test_csv_save(list_lyrics):
     clean_and_save_as_csv(list_lyrics, "Metallica")
     assert os.path.isfile('Metallica Lyrics.csv')
 
-# Decorators to save lyrics as csv
 
+# save lyrics as csv
 def csv_save(list_lyrics):
     clean_and_save_as_csv(list_lyrics, "Metallica")
+
 
 def csv_save_2(list_lyrics_2):
     clean_and_save_as_csv(list_lyrics_2, "Nirvana")

@@ -29,4 +29,4 @@ def clean_and_save_as_csv(lyrics, artist):
     df = df[~df["lyrics"].str.contains("Unfortunately, we are not authorized to show these lyrics")]
     df = df[~df["lyrics"].str.contains("Instrumental")]
     print(f"{artist} lyrics has been saved in the folder")
-    return df.to_csv(f"{artist} Lyrics.csv")
+    df.to_csv(f"{artist} Lyrics.csv")
