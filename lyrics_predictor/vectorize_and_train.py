@@ -4,7 +4,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
 
 
-def clean_vectorize_train_naive_bayes(csv1, csv2):
+def merge_vectorize_train_naive_bayes(csv1, csv2):
     """Merge two csv files, vectorize and train a naive bayes model on the data.
 
     csv1 and csv2: csv files with lyrics of two artists and the name of them.
@@ -40,4 +40,5 @@ def predcit_func(lyrics, m_t, tv_tf):
     """
     x_test = tv_tf.transform([lyrics]).todense()
     prediction = m_t.predict(x_test)
-    return print(f"This song belongs to {prediction}")
+    print(f"This song belongs to {prediction}")
+    return prediction
