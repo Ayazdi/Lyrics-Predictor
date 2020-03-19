@@ -9,9 +9,9 @@ It accepts three outputs:
  save it as a csv file and train a naive bayes model to predict the artitst of
  the given lyrics
  """
-from lyrics_predictor.vectorize_and_train import clean_vectorize_train_naive_bayes
+from lyrics_predictor.vectorize_and_train import merge_vectorize_train_naive_bayes
 from lyrics_predictor.vectorize_and_train import predcit_func
-from lyrics_predictor.get_urls_and_scrape import get_urls_scrape_save_as_csv, get_urls, lyrics_scraper
+from lyrics_predictor.get_urls_and_scrape import get_urls_scrape_save_as_csv
 
 
 if __name__ == '__main__':
@@ -21,7 +21,7 @@ if __name__ == '__main__':
     ARTIST_2 = input()
     get_urls_scrape_save_as_csv(ARTIST_1)
     get_urls_scrape_save_as_csv(ARTIST_2)
-    MODEL, VECTORIZER = clean_vectorize_train_naive_bayes(ARTIST_1, ARTIST_2)
+    MODEL, VECTORIZER = merge_vectorize_train_naive_bayes(ARTIST_1, ARTIST_2)
 
     print("\nWrite a song that you want to predict or write END to finish:\n")
     LYRICS = input()
