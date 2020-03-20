@@ -10,7 +10,7 @@ install:
 script:
 - pytest
 - pylint lyrics_predictor/*.py
-- coverage run tests/test_lyrics_predictor.py
+- pytest --cov=./
 
 # # Push the results back to codecov
 after_success:
