@@ -19,7 +19,11 @@ python lyrics_predictor.py
  - scikit-learn
 
 ## Scripts:
-- lyrics_predictor_module.py
+- **lyrics_predictor_module.py**: The main py file to run the program
+- **get_urls_and_scrape**: Generates ulrs of the first two pages of the artists songs and scrape the lyrics using requests and BeautifulSoup
+- **clean_and_save**: Clean the lyrics from special characters and removes duplicates and unwated ones such as instrumental songs. Put them  in a pandas DataFarme with two columns, lyrics and name of the artist and finally save the data as csv file.
+- **vectorize_and_train**: Merges two csv files that were created for each artists into one and vectorize the lyrics using TfidVectorizer. In addition, it trains Multinominal Naive Bayes model on the vectorized lyrics to predict the the name of the artist for the given new lyrics
+
 
 
 ## Description:
@@ -31,10 +35,6 @@ python lyrics_predictor.py
 
 
 
-Features
---------
-
-* TODO
 
 Credits
 -------
