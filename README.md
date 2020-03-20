@@ -4,6 +4,7 @@
 
 A python program to scrape lyrics from any artist on metrolyrics.com and train a lyrics predictor model to predict which artist the given lyrics belongs.
 
+![alt text][gif file.gif]
 
 contact = amirali.yazdi@yahoo.com
 
