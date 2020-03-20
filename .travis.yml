@@ -6,11 +6,12 @@ install:
   - pip install -r requirements.txt
   - pip install -e .
   - pip install codecov
+  - pip install pytest pytest-cov
 # command to run tests
 script:
 - pytest
 - pylint lyrics_predictor/*.py
-- coverage run tests/test_lyrics_predictor.py
+- pytest --cov=./
 
 # # Push the results back to codecov
 after_success:
